@@ -1,0 +1,16 @@
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  role TEXT NOT NULL
+);
+
+CREATE TABLE breakdowns (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  issue TEXT,
+  latitude DOUBLE PRECISION,
+  longitude DOUBLE PRECISION,
+  status TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
